@@ -1,4 +1,6 @@
-package hello.core.member;
+package hello.core.member.domain;
+
+import hello.core.member.domain.Grade;
 
 public class Member {
     private Long id;

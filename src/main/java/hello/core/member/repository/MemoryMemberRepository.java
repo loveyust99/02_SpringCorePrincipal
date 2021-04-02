@@ -1,9 +1,12 @@
-package hello.core.member;
+package hello.core.member.repository;
+
+import hello.core.member.domain.Member;
+import hello.core.member.repository.MemberRepository;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemoryMemberRepository implements MemberRepository{
+public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
 
