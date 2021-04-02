@@ -36,4 +36,13 @@ public class Member {
     public Grade getGrade() {
         return grade;
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", grade=" + grade +
+                '}';
+    }
 }

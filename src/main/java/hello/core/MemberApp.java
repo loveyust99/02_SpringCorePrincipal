@@ -16,6 +16,7 @@ public class MemberApp {
         System.out.println("new member    Id = " + member.getId());
         System.out.println("new member  Name = " + member.getName());
         System.out.println("new member Grade = " + member.getGrade());
+        System.out.println("-----------------------------------------");
         System.out.println("findMember    Id = " + findMember.getId());
         System.out.println("findMember  Name = " + findMember.getName());
         System.out.println("findMember Grade = " + findMember.getGrade());
