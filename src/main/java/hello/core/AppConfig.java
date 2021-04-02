@@ -12,6 +12,7 @@ import hello.core.order.service.OrderServiceImpl;
 
 public class AppConfig {
 
+    // 이하 사용영역
     //멤버서비스 역할(멤버 가입/조회 등)을 수행하는 것에만 집중.
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
@@ -22,6 +23,7 @@ public class AppConfig {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
+    // 이하 구성(Configuration) 영역
     //저장소(메모리DB, Oracle/MS-SQL/MySQL/Redis/MongoDB 등 상관없이)의 역할(CRUD)에만 집중.
     public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
