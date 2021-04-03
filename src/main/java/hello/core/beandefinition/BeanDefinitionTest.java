@@ -11,8 +11,8 @@ import static org.springframework.beans.factory.config.BeanDefinition.ROLE_APPLI
 
 public class BeanDefinitionTest {
 
-//    AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig .class);
-    GenericXmlApplicationContext ac = new GenericXmlApplicationContext("AppConfig.xml");
+    AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig .class);
+//    GenericXmlApplicationContext ac = new GenericXmlApplicationContext("AppConfig.xml");
 
     @Test
     @DisplayName("Spring Bean 설정 메타정보 확인")
