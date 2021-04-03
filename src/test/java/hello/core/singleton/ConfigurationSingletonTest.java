@@ -8,6 +8,7 @@ import hello.core.order.service.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ConfigurationSingletonTest {
@@ -31,6 +32,14 @@ public class ConfigurationSingletonTest {
 
         Assertions.assertThat(memberRepository1).isSameAs(memberRepository2);
         Assertions.assertThat(memberRepository).isSameAs(memberRepository2);
+    }
+
+    @Test
+    void configurationDeep() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig appConfig = ac.getBean(AppConfig.class);
+
+        System.out.println("appConfig.getClass() = " + appConfig.getClass());
     }
 
 }
