@@ -3,6 +3,7 @@ package hello.core.scope;
 import ch.qos.logback.core.net.server.Client;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -42,21 +43,35 @@ public class SingletonWithPrototypeTest1 {
         System.out.println("clientBean2.logic() = " + count2);
 
         Assertions.assertThat(count1).isEqualTo(1);
-        Assertions.assertThat(count2).isEqualTo(2);
+//        Assertions.assertThat(count2).isEqualTo(2);
+        Assertions.assertThat(count2).isEqualTo(1);
 
         ac.close();
     }
 
     @Scope("singleton")
     static class ClientBean {
-        private final PrototypeBean prototypeBean;  //생성시점에 주입
+//        private final PrototypeBean prototypeBean;  //생성시점에 주입
+//
+//        @Autowired
+//        public ClientBean(PrototypeBean prototypeBean) {
+//            this.prototypeBean = prototypeBean;
+//        }
+//
+//        public int logic() {
+//            prototypeBean.addCount();
+//            return prototypeBean.getCount();
+//        }
+
+        private ObjectProvider<PrototypeBean> prototypeBeanObjectProvider;
 
         @Autowired
-        public ClientBean(PrototypeBean prototypeBean) {
-            this.prototypeBean = prototypeBean;
+        public ClientBean(ObjectProvider<PrototypeBean> prototypeBeanObjectProvider) {
+            this.prototypeBeanObjectProvider = prototypeBeanObjectProvider;
         }
 
         public int logic() {
+            PrototypeBean prototypeBean = prototypeBeanObjectProvider.getObject();
             prototypeBean.addCount();
             return prototypeBean.getCount();
         }
